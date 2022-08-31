@@ -9,6 +9,6 @@ public interface UserService extends UserDetailsService {
     List<User> getAllUsers();
     void save(User user);
     void deleteById(int id);
-    User getUserById(int id);
     User getUserByUsername(String username);
+    User getUserById(int id);
 }

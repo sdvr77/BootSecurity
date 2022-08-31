@@ -23,15 +23,14 @@ public class User implements UserDetails {
     private String username;
     @Column
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
     public User() {
     }
-    public User(int id, String name, String surName, int age, String username, String password, Set<Role> roles) {
-        this.id = id;
+    public User(String name, String surName, int age, String username, String password, Set<Role> roles) {
         this.name = name;
         this.surName = surName;
         this.age = age;

@@ -13,27 +13,26 @@
         <th>Year</th>
     </tr>
     <tr th:each="user : ${users}">
-
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
         <td th:text="${user.surName}"></td>
         <td th:text="${user.age}"></td>
+        <td>
+            <form th:action="@{updateUser/{id}(id=${user.getId()})}" th:object="${user}">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{delete/{id}(id=${user.getId()})}" th:object="${user}">
+                <input type="hidden" name="id" th:value="${user.getId()}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
     </tr>
 </table>
-
 <br>
-
-<table>
-    <th><input type="button" value="Add new User"
-               onclick="window.location.href = 'addUser'"/>
-    </th>
-    <th><input type="button" value="Update User"
-               onclick="window.location.href = 'updateUser'"/>
-    </th>
-    <th><input type="button" value="Delete User"
-               onclick="window.location.href = 'deleteUser'"/>
-    </th>
-</table>
+<input type="button" value="Add new User"
+       onclick="window.location.href = 'addUser'"/>
 <br>
 <input type="button" value="Logout"
            onclick="window.location.href = '/logout'"/>

@@ -9,18 +9,23 @@
 <h2>Update User Info</h2>
 <form th:method="POST" th:action="@{/admin/saveUser}" th:object="${user}">
 
-    <label for="name">Enter ID</label>
-    <input type="text" th:field="*{id}" id="id"/>
+    <label th:for="id">ID</label>
+    <input type="text" name="id" th:id="id" th:value="${user.getId()}">
     <br><br>
-    <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name"/>
+    <label th:for="name">Name</label>
+    <input type="text" name="name" th:id="name" th:value="${user.getName()}">
     <br><br>
-    <label for="surname">Surname</label>
-    <input type="text" th:field="*{surName}" id="surname"/>
+    <label th:for="surname">Surname</label>
+    <input type="text" name="surName" th:id="surName" th:value="${user.getSurName()}">
     <br><br>
-    <label for="age">Age</label>
-    <input type="text" th:field="*{age}" id="age"/>
+    <label th:for="age">Age</label>
+    <input type="text" name="age" th:id="age" th:value="${user.getAge()}">
     <br><br>
+    <label th:for="username">Username</label>
+    <input type="text" name="username" th:id="username" th:value="${user.getUsername()}">
+    <br><br>
+    <label th:for="password">Password</label>
+    <input type="text" name="password" th:id="password" th:value="${user.getPassword()}">
     <input type="submit" value="Ok">
 
 </form>
