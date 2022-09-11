@@ -34,11 +34,23 @@ public class Role implements GrantedAuthority {
     }
 
     public String getName() {
+//        return name.substring(5);
         return name;
+    }
+    public String getRole() {
+        return name.substring(5);
     }
 
     public void setName(String role) {
         this.name = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -92,6 +93,9 @@ public class User implements UserDetails {
                 ", name='" + name + '\'' +
                 ", surName='" + surName + '\'' +
                 ", age=" + age +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 

@@ -1,18 +1,14 @@
 package ru.kata.spring.boot_security.demo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.demo.dao.UserDao;
-import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 
 import javax.transaction.Transactional;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -32,14 +28,7 @@ public class UserServiceImp implements UserService {
     @Override
     @Transactional
     public void save(User user) {
-        if (user.getRoles() == null) {
-            Set<Role> roles = new HashSet<>();
-            roles.add(roleService.getRoleByName("ROLE_USER"));
-            user.setRoles(roles);
-        }
-        if (user.getId() == 0) {
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.save(user);
     }
 
